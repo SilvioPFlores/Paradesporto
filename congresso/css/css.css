@@ -1,0 +1,632 @@
+/*---------cores-----------*/
+.btn-azul {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #004aad;
+    --bs-btn-border-color: #004aad;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #0b3f83;
+    --bs-btn-hover-border-color: #0b3f83;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0b3f83;
+    --bs-btn-active-border-color: #0b3f83;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #004aad;
+    --bs-btn-disabled-border-color: #004aad;
+}
+.cor1{
+    color: #004aad;
+}
+.cor2{
+    color: #6C8158;
+}
+.cor3{
+    color: #215A36;
+}
+.cor4{
+    color: #D7571E;
+}
+.nav-link{
+    color:#FFFFFF;
+}
+
+/*-------fixos---------*/
+p{
+    text-align: justify;
+}
+li{
+    text-align: justify;
+}
+a{
+    text-decoration: none;
+}
+img{
+    width:100%;
+    max-width: 780px;
+}
+video{
+    width:100%;
+    max-width: 780px;
+}
+.divMed{
+    width:100%;
+	max-width:800px;
+	margin-right:auto;
+	margin-left:auto;
+}
+.divImg{
+    width:100%;
+	max-width:800px;
+    height: auto;
+}
+.centro {
+    text-align: center;
+}
+.top1{
+    margin-top: 1%;
+}
+.top2{
+    margin-top: 2%;
+}
+.top3{
+    margin-top: 3%;
+}
+.bottom1{
+    margin-bottom: 1%;
+}
+.bottom2{
+    margin-bottom: 2%;
+}
+.dir{
+    text-align: right;
+}
+.esq{
+    text-align: left;
+}
+
+/*--------fundos de paginas-----------*/
+.pag {
+    width:100%;
+    max-width: 780px;
+    padding: 5px;
+    border: 1px solid #333;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.pag1 {
+    background-image: url('../img/fundo1.png');
+}
+.pag2 {
+    background-image: url('../img/fundo2.png');
+}
+.pag3 {
+    background-image: url('../img/fundo2.png');
+}
+.pag4 {
+    background-image: url('../img/fundo4.png');
+}
+.pag5 {
+    background-image: url('../img/fundo5.png');
+}
+.pag6 {
+    background-image: url('../img/fundo6.png');
+}
+.pag7 {
+    background-image: url('../img/fundo7.png');
+}
+.pag8 {
+    background-image: url('../img/fundo2.png');
+}
+
+/*-------divs------*/
+.divData{
+    width:70%;
+    margin-top: -15%;
+    padding-left: 5%;
+}
+.divLive{
+    width:70%;
+    margin-bottom: -20px;
+}
+.divLibras{
+    margin-top: -10%;
+}
+.divLibras2{
+    margin-top: 2%;
+}
+.divLibras3{
+    margin-top: 2%;
+}
+.divPag4{
+    width: 70%;
+    padding-top: 13%;
+}
+.divPag7{
+    width: 70%;
+    padding-top: 11%;
+}
+.divTema{
+    margin-top: 3%;
+}
+.divTema2{
+    margin-top: 2%;
+}
+
+/*----div flutuante-----*/
+.control {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.superior {
+    width: 40%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    font-family: "Anton";
+    color: #215A36;
+    top: 0;
+    right: 0;
+}  
+.inferior {
+    width: 40%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    font-family: "Anton";
+    color: #215A36;
+    bottom: 0;
+    left: 0;
+}
+
+/*-------textos--------*/
+.texto1{
+    width:50%;
+    padding-top: 13%;
+    padding-left: 10%;
+    font-family: 'Anton';
+}
+.textoInsta0{
+    width:80%;
+    font-family: "Ubuntu";
+    font-weight:bold;
+}
+.texto2{
+    width:100%;
+    padding-top: 13%;
+    font-family: 'Anton';
+}
+.textoPres{
+    width:30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 5%;
+    background-color: #9DCD5A;
+    color: #215A36;
+    border-radius: 10px;/**/
+    font-family: "Ubuntu";
+    font-weight:bold;
+}
+.textoLocal{
+    margin-top: -3%;
+    font-family: "Ubuntu";
+    color: #215A36;
+}
+.textoLibras{
+    font-family: "Anton";
+    color: #004aad;
+}
+.textoInscri{
+    padding-top: 2%;
+    font-family: "Ubuntu";
+    font-weight:bold;
+}
+.textoInsta{
+    margin-top: 4%;
+    margin-bottom: 5%;
+    font-family: "Ubuntu";
+    font-weight:bold;
+}
+.barra{
+    font-family: "Anton";
+}
+.textoOnline{
+    margin-top: 5%;
+    background-color: #004aad;
+    color: #FFF;
+    border-radius: 10px;/**/
+    font-family: "Ubuntu";
+}
+.texto3{
+    font-family: "Anton";
+}
+.textoInscri2{
+    font-family: "Anton";
+}
+.textoData{
+    margin-top: 2%;
+    font-family: "Ubuntu";
+}
+.textoTema1{
+    font-family: "Anton";
+}
+.textoTema2{
+    font-family: "Anton";
+}
+.textoTema3{
+    font-family: "Anton";
+}
+.textoTema4{
+    font-family: "Anton";
+}
+.texto8{
+    font-family: "Anton";
+    margin-top: 13%;
+    color: #215A36;
+}
+.texto9{
+    font-family: "Ubuntu";
+    color: #215A36;
+    font-weight:bold;
+}
+.textoInsta2{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-family: "Ubuntu";
+    font-weight:bold;
+}
+
+/*----imagens------*/
+.imgLive{
+    margin-top: -12%;
+    width: 15%;
+    max-width: 100px;
+    margin-top: -25%;
+}
+.imgLoc{
+    max-width: 20px;
+}
+.imgLibras{
+    width: 25%;
+}
+.imgLibras2{
+    width: 50%;
+}
+.imgLibras3{
+    width: 18%;
+}
+.imgLibras4{
+    width: 13%;
+}
+.imgLogo{
+    width:70%;
+}
+
+/*------fontes variaveis por tela-------*/
+@media (min-width: 992px) {
+    .texto1{
+        font-size: 2rem;
+    }
+    .divData{
+        font-size: 1.8rem;
+    }
+    .textoInsta0{
+        font-size: 1rem;
+    }
+    .texto2{
+        font-size: 1.8rem;
+    }
+    .textoLibras{
+        font-size: 0.8rem;
+    }
+    .textoLocal{
+        margin-top: -3%;
+        font-size: 1.3rem;
+    }
+    .barra{
+        font-size: 1.5rem;
+    }
+    .textoInscri{
+        font-size: 1.3rem;
+    }
+    .textoInsta{
+        font-size: 1.1rem;
+    }
+    /*----pag3------*/
+    .textoOnline{
+        font-size: 1.5rem;
+    }
+    .texto3{
+        font-size: 1.3rem;
+    }
+    .textoInscri2{
+        font-size: 0.9rem;
+    }
+    /*----pag4------*/
+    .textoData{
+        font-size: 1.2rem;
+    }
+    .textoTema1{
+        font-size: 1.5rem;
+    }
+    .textoTema2{
+        font-size: 1.4rem;
+    }
+    /*----pag7------*/
+    .textoTema3{
+        font-size: 1.5rem;
+    }
+    .textoTema4{
+        font-size: 1.4rem;
+    }
+    /*----pag8------*/
+    .texto8{
+        font-size: 1.5rem;
+    }
+    .texto9{
+        font-size: 1.1rem;
+    }
+    .texto10{
+        font-size: 1.3rem;
+    }
+    .texto11{
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    /*-----pag1----*/
+    .texto1{
+        font-size: 1.6rem;
+    }
+    .divData{
+        font-size: 1.3rem;
+    }
+    .textoInsta0{
+        font-size: 0.8rem;
+    }
+    /*-----pag2----*/
+    .texto2{
+        font-size: 1.6rem;
+    }
+    .textoLibras{
+        font-size: 0.8rem;
+    }
+    .textoLocal{
+        margin-top: -3%;
+        font-size: 1.2rem;
+    }
+    .barra{
+        font-size: 1.4rem;
+    }
+    .textoInscri{
+        font-size: 1.1rem;
+    }
+    .textoInsta{
+        margin-top: 3%;
+        font-size: 1.0rem;
+    }
+    /*----pag3------*/
+    .textoOnline{
+        font-size: 1.4rem;
+    }
+    .texto3{
+        font-size: 1.2rem;
+    }
+    .textoInscri2{
+        font-size: 0.7rem;
+    }
+    /*----pag4------*/
+    .textoData{
+        font-size: 1.2rem;
+    }
+    .textoTema1{
+        font-size: 1.6rem;
+    }
+    .textoTema2{
+        font-size: 1.5rem;
+    }
+    /*----pag7------*/
+    .textoTema3{
+        font-size: 1.4rem;
+    }
+    .textoTema4{
+        font-size: 1.3rem;
+    }
+    /*----pag8------*/
+    .texto8{
+        font-size: 1.3rem;
+    }
+    .texto9{
+        font-size: 0.9rem;
+    }
+    .texto10{
+        font-size: 1.1rem;
+    }
+    .texto11{
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .texto1{
+        font-size: 1.2rem;
+    }
+    .divData{
+        font-size: 1rem;
+    }
+    .textoInsta0{
+        font-size: 0.6rem;
+    }
+    /*-----pag2----*/
+    .texto2{
+        font-size: 1.2rem;
+    }
+    .textoPres{
+        border-radius: 7px;
+    }
+    .textoLibras{
+        font-size: 0.7rem;
+    }
+    .barra{
+        font-size: 1.2rem;
+    }
+    .textoLocal{
+        margin-top: -3%;
+        font-size: 1.1rem;
+    }
+    .textoInscri{
+        font-size: 0.8rem;
+    }
+    .textoInsta{
+        margin-top: 2%;
+        font-size: 0.8rem;
+    }
+    /*----pag3------*/
+    .textoOnline{
+        font-size: 1.2rem;
+    }
+    .texto3{
+        font-size: 0.8rem;
+    }
+    .textoInscri2{
+        font-size: 0.5rem;
+    }
+    /*----pag4------*/
+    .divTema{
+        margin-top: 2%;
+    }
+    .textoData{
+        margin-top: 1%;
+        font-size: 1rem;
+    }
+    .textoTema1{
+        font-size: 1.1rem;
+    }
+    .textoTema2{
+        font-size: 1rem;
+    }
+    /*----pag7------*/
+    .divTema2{
+        margin-top: 1%;
+    }
+    .textoTema3{
+        font-size: 1.1rem;
+    }
+    .textoTema4{
+        font-size: 1rem;
+    }
+    .divLibras3{
+        margin-top: 1%;
+    }
+    /*----pag8------*/
+    .pag8 .esp{
+        margin-top: -5px;
+        margin-bottom: -3px;
+    }
+    .texto8{
+        font-size: 0.9rem;
+    }
+    .texto9{
+        font-size: 0.6rem;
+    }
+    .texto10{
+        font-size: 1rem;
+    }
+    .texto11{
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 592.98px) {
+    .texto1{
+        font-size: 0.8rem;
+    }
+    .divData{
+        font-size: 0.7rem;
+    }
+    .textoInsta0{
+        font-size: 0.4rem;
+    }
+    /*-----pag2----*/
+    .texto2{
+        font-size: 0.9rem;
+    }
+    .textoPres{
+        border-radius: 4px;
+    }
+    .textoLibras{
+        font-size: 0.5rem;
+    }
+    .barra{
+        font-size: 0.6rem;
+    }
+    .textoLocal{
+        margin-top: 0;
+        font-size: 0.7rem;
+    }
+    .textoInscri{
+        font-size: 0.5rem;
+    }
+    .textoInsta{
+        margin-top: 2%;
+        font-size: 0.5rem;
+    }
+    /*----pag3------*/
+    .textoOnline{
+        font-size: 0.7rem;
+    }
+    .imgLibras2{
+        width: 35%;
+    }
+    .texto3{
+        font-size: 0.6rem;
+    }
+    .textoInscri2{
+        font-size: 0.4rem;
+    }
+    /*----pag4------*/
+    .divTema{
+        margin-top: 1%;
+    }
+    .textoData{
+        margin-top: 1%;
+        font-size: 0.7rem;
+    }
+    .textoTema1{
+        font-size: 1rem;
+    }
+    .textoTema2{
+        font-size: 0.9rem;
+    }
+    /*----pag7------*/
+    .divTema2{
+        margin-top: 0;
+    }
+    .divLibras3{
+        margin-top: 0;
+    }
+    /*----pag8------*/
+    .pag8 .esp{
+        margin-top: -5px;
+        margin-bottom: -3px;
+    }
+    .texto8{
+        font-size: 0.7rem;
+    }
+    .texto9{
+        font-size: 0.4rem;
+    }
+    .texto10{
+        font-size: 0.7rem;
+    }
+    .texto11{
+        font-size: 0.5rem;
+    }
+    .textoInsta2{
+        margin-top: 2%;
+        margin-bottom: 2%;
+        font-size: 0.5rem;
+    }
+}

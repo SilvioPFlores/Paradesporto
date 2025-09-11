@@ -1,0 +1,91 @@
+body{
+	background-color: #FFFFFF;
+	color: #333333;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 130px;
+}
+footer {
+    position: absolute;
+    bottom: 0px;
+    width:100%;
+}
+/*--------cabeçalho --- menu --- rodapé-------*/
+.cabec{
+    padding-top: 8px;
+}
+.logo{
+	padding-top: 20px;
+    padding-bottom: 20px;
+}
+.logo img {
+    max-width:100%;
+    height:auto;
+}
+.btnDireito{
+    text-align: right;
+}
+.ladoDireito{
+    text-align: right;
+}
+.textoLinkCabec{
+    color: #000000;
+    text-decoration: none;
+}
+.espTop8{
+    padding-top: 8px;
+}
+.btnVerde{
+	--bs-btn-color: #1A9D6F;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #1A9D6F;
+    --bs-btn-hover-border-color: #1A9D6F;
+    --bs-btn-focus-shadow-rgb: 25,135,84;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #1A9D6F;
+    --bs-btn-active-border-color: #1A9D6F;
+    --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #1A9D6F;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #1A9D6F;
+    --bs-gradient: none;
+}
+.corVerde{
+	background-color: #1A9D6F;
+	color:#FFFFFF;
+}
+.nomeMenu{
+    color:#FFFFFF !important;
+    font-family: 'Arimo';
+    font-weight: bold;
+    font-size: 27px;
+}
+.logo-head{
+    justify-content: flex-end;
+}
+.logo-foot{
+    display: flex;
+}
+.bandeira{
+    width: 20px;
+    height: 20px;
+}
+.contato{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+}
+/*Configurações de centralização para telas mobile < 592*/
+@media (max-width: 592.98px) {
+    .logo-head{
+        justify-content: center !important;
+    }
+    .logo-foot{
+        display: block;
+    }
+    body{
+        padding-bottom: 260px !important;
+    }
+}
+/*--------------fim----------------*/

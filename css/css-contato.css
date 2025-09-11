@@ -1,0 +1,21 @@
+.divCentro{
+	padding-top: 20px;
+	margin-right:auto;
+	margin-left:auto;
+}
+.req {
+    color: red;
+}
+a{
+    text-decoration: none;
+    color: #1A9D6F;
+}
+.direita{
+    text-align: right;
+}
+.classePcd{
+    display: none;
+}
+.top10{
+    margin-top: 10px;
+}

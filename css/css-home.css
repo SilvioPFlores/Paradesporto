@@ -1,0 +1,110 @@
+a{
+    text-decoration: none;
+}
+.top40{
+	padding-top: 40px;
+}
+.cardHome{
+    color: #000000;
+}
+.divInsta{
+    text-align: center;
+    font-size: 25px;
+}
+.divInsta img{
+    width:50px;
+}
+.divInsta a{
+    color: #000000;
+}
+.centro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*Configurações de borda e font para telas extra-grandes >1400*/
+@media (min-width: 1400px) {
+    .responsive-font-example {
+        font-size: 25px;
+    }
+    .responsive-bord{
+        border: 25px solid #D7571E;
+        border-radius: var(--bs-border-radius-2xl) !important;
+    }
+    .responsive-bord-azul{
+        border: 25px solid #004aad;
+        border-radius: var(--bs-border-radius-2xl) !important;
+    }
+    .responsive-bory-card{
+        --bs-card-spacer-y: 1rem;
+        --bs-card-spacer-x: 1rem;
+    }
+}
+/*Configurações de borda e font para telas grandes 1200 <> 1400*/
+@media (max-width: 1399.98px) {
+    .responsive-font-example {
+        font-size: 21px;
+    }
+    .responsive-bord{
+        border: 20px solid #D7571E;
+        border-radius: var(--bs-border-radius-2xl) !important;
+    }
+    .responsive-bord-azul{
+        border: 20px solid #004aad;
+        border-radius: var(--bs-border-radius-2xl) !important;
+    }
+    .responsive-bory-card{
+        --bs-card-spacer-y: 0.8rem;
+        --bs-card-spacer-x: 0.8rem;
+    }
+}
+/*Configurações de borda e font para telas médias 992 <> 1200*/
+@media (max-width: 1199.98px) {
+    .responsive-font-example {
+        font-size: 18px;
+    }
+    .responsive-bord{
+        border: 15px solid #D7571E;
+        border-radius: var(--bs-border-radius-xl) !important;
+    }
+    .responsive-bory-card{
+        --bs-card-spacer-y: 0.6rem;
+        --bs-card-spacer-x: 0.6rem;
+    }
+}
+/*Configurações de borda e font para telas pequenass 768 <> 992*/
+@media (max-width: 991.98px) {
+    .responsive-font-example {
+        font-size: 13px;
+    }
+    .responsive-bord{
+        border: 15px solid #D7571E;
+        border-radius: var(--bs-border-radius-xl) !important;
+    }
+    .responsive-bord-azul{
+        border: 11px solid #004aad;
+        border-radius: var(--bs-border-radius-xl) !important;
+    }
+    .responsive-bory-card{
+        --bs-card-spacer-y: 0.4rem;
+        --bs-card-spacer-x: 0.4rem;
+    }
+}
+/*Configurações de borda e font para telas extra-pequenas < 768*/
+@media (max-width: 767.98px) {
+    .responsive-font-example {
+        font-size: 28px;
+    }
+    .responsive-bord{
+        border: 25px solid #D7571E;
+        border-radius: var(--bs-border-radius-2xl) !important;
+    }
+    .responsive-bord-azul{
+        border: 25px solid #004aad;
+        border-radius: var(--bs-border-radius-2xl) !important;
+    }
+    .responsive-bory-card{
+        --bs-card-spacer-y: 1rem;
+        --bs-card-spacer-x: 1rem;
+    }
+}

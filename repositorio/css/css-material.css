@@ -1,0 +1,25 @@
+#divUpado {
+    background-color: #E0EEEE;
+    border: solid 2px #5F9EA0;
+    border-radius: 10px;
+    height: 32px;
+}
+#txtUpado {
+    float: left;
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 18px;
+    border: none;
+}
+#btnExclui {
+    border: none;
+    padding: 7px;
+    float: right;
+    --bs-btn-close-focus-shadow: 0 0 0 0.0rem;
+}
+.req {
+    color: red;
+}
+.cd0{
+    display: none;
+}

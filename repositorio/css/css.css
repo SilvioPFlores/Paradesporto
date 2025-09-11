@@ -1,0 +1,91 @@
+.divCentro{
+	padding-top: 20px;
+	margin-right:auto;
+	margin-left:auto;
+}
+.bordLaranja{
+    border: 1.5px solid #D7571E;
+}
+.btnLaranja{
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #D7571E;
+    --bs-btn-border-color: #D7571E;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #ca5827;
+    --bs-btn-hover-border-color: #ca5827;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ca5827;
+    --bs-btn-active-border-color: #ca5827;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #D7571E;
+    --bs-btn-disabled-border-color: #D7571E;
+}
+#btnLupa{
+    width:20px;
+    height:20px;
+}
+.bordLaranja:focus {
+    border-color: rgb(215, 87, 30);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(215, 87, 30, 0.6);
+}
+.top20{
+	padding-top: 20px;
+}
+.cardColor{
+    text-decoration: none;
+    color: #206FB0;
+    border-color: #206FB0;
+}
+.cardColor :hover{
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #206FB0;
+    border: 2px solid #206FB0;
+}
+.flex-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bordVerde{
+    border: 1.5px solid #1A9D6F;
+}
+.bordAzul{
+    border: 1.5px solid #206FB0;
+}
+.btnAzul{
+	--bs-btn-color: #206FB0;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #206FB0;
+    --bs-btn-hover-border-color: #206FB0;
+    --bs-btn-focus-shadow-rgb: 25,135,84;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #206FB0;
+    --bs-btn-active-border-color: #206FB0;
+    --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #206FB0;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #206FB0;
+    --bs-gradient: none;
+}
+.espTop4{
+    margin-top: 4px;
+}
+.divMax{
+	width:100%;
+	text-align: center;
+    min-height:50px;
+	white-space: normal;
+	word-wrap: normal;
+}
+.quebraLink a{
+    transition: .3s;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+.btnMaterial {
+    width:100%;
+    margin-top: 3pt;
+}

@@ -1,0 +1,137 @@
+.divConteudo{
+	background-color:#FFFFFF;
+	color: #1a532f;
+	border-radius: 6px;
+	border: 1px solid transparent;
+	width: 90%;
+	margin-right: 5%;
+    margin-left: 5%;
+	margin-top: 1px;
+	margin-bottom: 5px;
+	padding-right: 5%;
+	padding-left: 5%;
+	padding-top:20px;
+	padding-bottom:20px;
+	justify-content: center;
+}
+.cabec{
+    padding-top: 8px;
+}
+.logo{
+	padding-top: 30px;
+    padding-bottom: 10px;
+}
+.tL{
+    text-align: left;
+}
+.tR{
+    text-align: right;
+}
+.btnVerde{
+	--bs-btn-color: #fff;
+	--bs-btn-bg: #318550;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #318550;
+    --bs-btn-hover-border-color: #246e3f;
+    --bs-btn-focus-shadow-rgb: 25,135,84;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #318550;
+    --bs-btn-active-border-color: #318550;
+    --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #318550;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #318550;
+    --bs-gradient: none;
+}
+.corVerde{
+	background-color: #318550;
+	color:#FFFFFF;
+}
+.btnLaranja{
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #D7571E;
+    --bs-btn-border-color: #D7571E;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #ca5827;
+    --bs-btn-hover-border-color: #ca5827;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ca5827;
+    --bs-btn-active-border-color: #ca5827;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #D7571E;
+    --bs-btn-disabled-border-color: #D7571E;
+}
+.divCentro{
+	padding-top: 20px;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.divPq{
+	width:100%;
+	max-width:300px;
+	margin-right:auto;
+	margin-left:auto;
+}
+.divMd{
+	width:100%;
+	max-width: 500px;
+	margin-right:auto;
+	margin-left:auto;
+}
+.divGr{
+	width:100%;
+	max-width:800px;
+	margin-right:auto;
+	margin-left:auto;
+}
+#btnLupa{
+    width:20px;
+    height:20px;
+}
+.bordVerde{
+    border: 1.5px solid #198754;
+}
+.flex-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.top15{
+	padding-top: 20px;
+}
+.topMarg4{
+	margin-top: 4px;
+}
+.verdeClaro{
+    background-color: #f5fff5;
+}
+.cardColor{
+    text-decoration: none;
+    color: #318550;
+}
+.cardColor :hover{
+    text-decoration: none;
+    color: #196435;
+    background-color: #f5fff5;
+}
+.form-control:focus {
+    border-color: rgb(25, 135, 84);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(25, 135, 84, 0.6);
+}
+.form-select:focus {
+    border-color: rgb(25, 135, 84);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(25, 135, 84, 0.6);
+}
+.divMax{
+	width:100%;
+	text-align: center;
+    min-height:50px;
+	white-space: normal;
+	word-wrap: normal;
+}
+.btnJS{
+    margin: 0 0.3rem;
+}
