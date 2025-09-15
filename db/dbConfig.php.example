@@ -1,0 +1,7 @@
+    // Definição das constantes utilizadas na conexão com o Banco
+    define("DBDRIVER", 'mysql'); 
+    define("DBHOSTNAME", '');
+    define("DBPORT", 3306);
+    define("DBUSERNAME", '');
+    define("DBPASSWORD", '');
+    define("DBNAME", '');
