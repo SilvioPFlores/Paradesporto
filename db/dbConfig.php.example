@@ -1,4 +1,5 @@
-    // Definição das constantes utilizadas na conexão com o Banco
+<?php
+// Definição das constantes utilizadas na conexão com o Banco
     define("DBDRIVER", 'mysql'); 
     define("DBHOSTNAME", '');
     define("DBPORT", 3306);
