@@ -1,10 +1,9 @@
 #Banco 
 /db/dbConfig.php
 /admin/db/estrutura/
+/mysql/
 
 #armazenamento
 /congresso/midia/
 /producao/conteudo/
 /repositorio/trabalhos/
-
-
