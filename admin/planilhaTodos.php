@@ -1,6 +1,4 @@
 <?php
-	session_start();
-	
 	require_once 'db/dbConnection.php';
 	require_once 'query/query-planilha.php';
 	

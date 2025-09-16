@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'db/dbConnection.php';
 require_once 'query/query-trabalho.php';
 if(isset($_FILES['arqCSV'], $_POST['newChaveCsv'], $_POST['tpCsv'])) {

@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once "../db/dbConnection.php";
+require_once "db/dbConnection.php";
 
 //Permitido somente se estiver logado e for Nivel administrador
 $nivel = $_SESSION['repositorio']['nivel'];

@@ -1,8 +1,7 @@
 <?php
-session_start();
-$cdUser = $_SESSION['repositorio']['cdAcesso'];
 require_once 'db/dbConnection.php';
 require_once 'query/query-trabalho.php';
+$cdUser = $_SESSION['repositorio']['cdAcesso'];
 if(isset($_GET['motivo'], $_GET['cdTrabalho'])){
     //buscando o título do trabalho
     $paramsCdTrabalho = array(':cdTrabalho' => $_GET['cdTrabalho']);

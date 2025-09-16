@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'db/dbConnection.php';
 require_once 'query/query-projeto.php';
 require_once 'includes/head.php';

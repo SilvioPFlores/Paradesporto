@@ -1,5 +1,4 @@
 <?php
-session_start();
 function getHead($titulo, $lang,$css = '', $js = ''){
     ?>
     <!DOCTYPE html>
