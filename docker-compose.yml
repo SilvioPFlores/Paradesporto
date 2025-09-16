@@ -1,4 +1,4 @@
-# Versão do Docker Compose
+# Versão do Docker Compose a
 version: '3.8'
 
 # Definição dos nossos serviços (contêineres)
