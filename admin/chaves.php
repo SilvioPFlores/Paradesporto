@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'db/dbConnection.php';
 require_once 'query/query-trabalho.php';
 if(isset($_FILES['arqCSV'], $_POST['newChaveCsv'], $_POST['tpCsv'])) {
@@ -207,7 +206,7 @@ else{
                     <br>
                     <form>
                         <div class="input-group mb-3">
-                            <input type="text" name="b" class="form-control bordLaranja" placeholder="<?=$lang['pesquisa']?>" aria-label="<?=$lang['pesquisa']?>" aria-describedby="btnBusca">
+                            <input type="text" name="b" class="form-control bordLaranja" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="btnBusca">
                             <button class="btn btnLaranja" type="submit" id="btnBusca"><img src="../repositorio/img/lupa.png" id="btnLupa"></button>
                         </div>
                     </form>
@@ -216,7 +215,7 @@ else{
                     buscaPor(array('buscaLetra' => 'Buscar por ', 'all' => 'Todas'), $l, 'chaves.php');
             
                     if (empty($arrChave)) {
-                        echo $lang['nada'];
+                        echo "A busca não encontrou nenhum resultado!";
                     }
                         if (!empty($arrChave)) {
                             foreach ($arrChave as $dadoChave){

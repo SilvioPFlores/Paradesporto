@@ -1,6 +1,5 @@
 <?php
-session_start();
-function getHead($titulo = '', $lang,$css = '', $js = ''){
+function getHead($titulo, $lang,$css = '', $js = ''){
     ?>
     <!DOCTYPE html>
     <html lang="<?=$_SESSION['lang']?>">
@@ -31,8 +30,11 @@ function getHead($titulo = '', $lang,$css = '', $js = ''){
             echo "<script src='$js'></script>";
         }
         //Título  personalizado
-        if (!empty(trim($titulo))) {
+        if (!empty(trim($titulo)) && $titulo != '') {
             echo "<title>$titulo</title>";
+        }
+        else{
+            echo "<title>Paradesporto + Acessível</title>";
         }
         ?>
     </head>

@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'db/dbConnection.php';
 require_once 'query/query-producao.php';
 if (isset($_POST['newProducao']) && $_POST['newProducao'] == 'true') {

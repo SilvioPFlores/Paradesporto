@@ -30,7 +30,7 @@ if ($nivel != '') {
                         <div class="col-xl-8 col-lg-10 col-md-11 col-sm-12 divCentro">
                             <form action="consulta.php">
                                 <div class="input-group mb-3">
-                                    <input type="text" name="b" class="form-control bordVerde" placeholder="<?=$lang['pesquisa']?>" aria-label="<?=$lang['pesquisa']?>" aria-describedby="btnBusca">
+                                    <input type="text" name="b" class="form-control bordVerde" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="btnBusca">
                                     <button class="btn btnVerde" type="submit" id="btnBusca"><img src="../repositorio/img/lupa.png" id="btnLupa"></button>
                                 </div>
                             </form>
