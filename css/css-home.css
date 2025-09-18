@@ -8,7 +8,6 @@ a{
     color: #000000;
 }
 .divInsta{
-    text-align: center;
     font-size: 25px;
 }
 .divInsta img{
@@ -17,11 +16,15 @@ a{
 .divInsta a{
     color: #000000;
 }
+.divAccess img{
+    width:280px;
+}
 .centro{
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 /*Configurações de borda e font para telas extra-grandes >1400*/
 @media (min-width: 1400px) {
     .responsive-font-example {
