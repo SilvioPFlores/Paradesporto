@@ -81,6 +81,12 @@
         /*----------Projeto-----------*/
         "objetivo" => "Objetivo",
         "equipe" => "Equipe",
+
+        /*----------Accessercise-----------*/
+        "bemVindo" => "Bem-vindo ao Accessercise",
+        "parag_1" => "O Accessercise foi desenvolvido por pessoas com deficiência para pessoas com deficiência.",
+        "parag_2" => "É o primeiro aplicativo de condicionamento físico pensado exclusivamente para esse público e já está disponível na App Store e no Google Play.",
+        "parag_3" => "A adaptação para o Brasil foi realizada em parceria com a ANDE (Associação Nacional de Desportos para Deficientes), a UNIFESP (Universidade Federal de São Paulo) e o MESP (Ministério do Esporte).",
         
         /*----------Imagens-----------*/
         "altParadesp" => "Logo do projeto tem 3 conceitos e representação. Do lado esquerdo a Acessibilidade, através do símbolo universal da ONU em laranja. No centro o Paradesporto com uma roda de cadeira de rodas, uma bola de goalball e um atleta lançando um dardo na cor azul, e do lado direito a interação virtual através de um celular com uma arroba ao centro na cor verde",

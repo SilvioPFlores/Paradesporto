@@ -81,7 +81,7 @@ menu();
             </div>
             <div class="col-12 col-sm-auto">
                 <div class="divAccess">
-                    <a href="https://www.instagram.com/paradesporto_br/" target="_blank">
+                    <a href="accessercise.php">
                         <img src="img/home/access.png" alt="Accessercise">
                     </a>
                 </div>

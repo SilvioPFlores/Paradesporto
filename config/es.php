@@ -81,6 +81,12 @@
         /*----------Projeto-----------*/
         "objetivo" => "Meta",
         "equipe" => "Equipo",
+
+        /*----------Accessercise-----------*/
+        "bemVindo" => "Bienvenido a Accessercise",
+        "parag_1" => "Accessercise fue desarrollado por personas con discapacidad para personas con discapacidad.",
+        "parag_2" => "Es la primera aplicación de acondicionamiento físico pensada exclusivamente para este público y ya está disponible en la App Store y en Google Play.",
+        "parag_3" => "La adaptación para Brasil se realizó en asociación con la ANDE (Asociación Nacional de Deportes para Personas con Discapacidad), la UNIFESP (Universidad Federal de São Paulo) y el MESP (Ministerio del Deporte).",
         
         /*----------Imagens-----------*/
         "altParadesp" => "El diseño del logotipo tiene 3 conceptos y representaciones. En el lateral izquierdo, Accesibilidad, a través del símbolo universal de la ONU en color naranja. En el centro, el Para deporto con una rueda de silla de ruedas, un ballon de goalball y un atleta lanzando un javalina en color azul,y del lado derecho, la interacción virtual a través de un celular con una arroba en el centro en verde",

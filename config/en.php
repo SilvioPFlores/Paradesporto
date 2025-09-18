@@ -81,6 +81,12 @@
         /*----------Projeto-----------*/
         "objetivo" => "Aim",
         "equipe" => "Team",
+
+        /*----------Accessercise-----------*/
+        "bemVindo" => "Welcome to Accessercise",
+        "parag_1" => "Accessercise was developed by people with disabilities for people with disabilities.",
+        "parag_2" => "It is the first fitness app designed exclusively for this audience and is already available on the App Store and Google Play.",
+        "parag_3" => "The adaptation for Brazil was carried out in partnership with ANDE (National Association of Sports for People with Disabilities), UNIFESP (Federal University of São Paulo), and MESP (Ministry of Sports).",
         
         /*----------Imagens-----------*/
         "altParadesp" => "The design logo has 3 concepts and representations. On the left side, Accessibility, through the universal symbol of the UN in orange. In the center, the Para sport with a wheelchair wheel, a ball of goalball, and an athlete throwing a javelin in blue color, and on the right side, the virtual interaction through a cell phone with an at sign in the center in green",
