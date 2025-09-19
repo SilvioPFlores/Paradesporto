@@ -1,5 +1,4 @@
 <?php
-require_once 'db/dbConnection.php';
 require_once 'query/query-projeto.php';
 include 'config/config.php';
 include 'includes/head.php';
