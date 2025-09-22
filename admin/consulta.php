@@ -7,7 +7,7 @@ require_once 'includes/menu.php';
 $nivel = $_SESSION['repositorio']['nivel'];
 if ($nivel != '') {
     getMenu($nivel);
-
+    $l = '';
     if(isset($_GET['l'])){
         $arrTitulo = buscaTituloLetra($conn,array(':letra' => $_GET['l'].'%'));
         $l = $_GET['l'];
