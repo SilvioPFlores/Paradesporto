@@ -1,11 +1,6 @@
 <?php
 require_once "db/dbConnection.php";
 include_once "query/query-acesso.php";
-include 'includes/head.php';
-getHead('Login', "css/css-login.css");
-include 'includes/menu.php';
-getMenu('');
-$erroLogin = '';
 if (isset($_POST['entrarLogin'], $_POST['login'], $_POST['senha']) && $_POST['entrarLogin'] == 'true') {
 	$arrLogin = login($conn, $_POST['login'], md5($_POST['senha']));
 	if ($arrLogin != '') {
@@ -17,8 +12,12 @@ if (isset($_POST['entrarLogin'], $_POST['login'], $_POST['senha']) && $_POST['en
 		$erroLogin =  'Usuário ou senha incorreto';
 	}
 }
+include 'includes/head.php';
+getHead('Login', "css/css-login.css");
+include 'includes/menu.php';
+getMenu('');
+$erroLogin = '';
 ?>
-<!-- Bloco Página -->
 <div class="page" id="page">
 	<div class='login' id='divLogin'>
 		<br>
