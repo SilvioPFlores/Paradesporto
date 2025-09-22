@@ -29,10 +29,10 @@ menu('ACCESSERCISE');
 
             <!-- Botões App Store e Google Play -->
             <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
-                <a href="#" target="_blank">
+                <a href="https://play.google.com/store/apps/details?id=com.accessercise.android.prod&pcampaignid=web_share" target="_blank">
                     <img src="img/home/dispGoogle.png" alt="Google Play" class="img-fluid" style="max-height:60px;">
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://apps.apple.com/br/app/accessercise/id1542340631" target="_blank">
                     <img src="img/home/dispApple.png" alt="App Store" class="img-fluid" style="max-height:60px;">
                 </a>
             </div>
