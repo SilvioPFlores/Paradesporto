@@ -1,40 +1,40 @@
-# Versão do Docker Compose a
 version: '3.8'
 
-# Definição dos nossos serviços (contêineres)
 services:
 
   # Serviço 1: Servidor Web (Apache + PHP)
   webserver:
-    # Usa uma imagem oficial do PHP com Apache já configurado
     build: .
     container_name: paradesporto-web
-    # Mapeia a porta 8000 do seu notebook para a porta 80 do contêiner
     ports:
       - "8000:80"
-    # Mapeia a pasta atual do projeto para a pasta web do Apache dentro do contêiner
     volumes:
       - ./:/var/www/html
 
   # Serviço 2: Banco de Dados (MySQL)
   database:
-    # Usa uma imagem oficial do MySQL
     image: mysql:8.0
     container_name: paradesporto-db
-    # Garante que o banco de dados sempre reinicie se houver algum problema
     restart: always
-    # Variáveis de ambiente para configurar o MySQL
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: paradesporto_db
-    # Mapeia a porta 33066 do seu notebook para a porta 3306 do contêiner
     ports:
       - "127.0.0.1:33066:3306"
-    # Persiste os dados do banco de dados em um volume no seu disco
     volumes:
       - db-data:/var/lib/mysql
       - ./mysql/conf.d:/etc/mysql/conf.d
 
-# Define os volumes nomeados para persistência de dados
+  # Serviço 3: phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    environment:
+      PMA_HOST: database   # usa o nome do serviço do MySQL
+    ports:
+      - "8080:80"
+    volumes:
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+
 volumes:
   db-data:
