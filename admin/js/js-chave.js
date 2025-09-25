@@ -48,7 +48,6 @@ $(document).ready(function () {
                 var txt = '';
                 var booOk = false;
                 var booErro = false;
-                var booDuplicado = false;
                 if(obj['novo'] != '0'){
                     txt = 'Foram adicionadas ' + obj['novo'] + ' Palavras chaves!\n\r';
                     booOk = true;

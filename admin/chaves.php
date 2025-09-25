@@ -25,9 +25,10 @@ if(isset($_FILES['arqCSV'], $_POST['newChaveCsv'], $_POST['tpCsv'])) {
                 ':cdChave'  => mb_strtoupper(trim($dados[0], ' '), 'UTF-8'),
                 ':chavePt'  => mb_strtoupper(trim($dados[1], ' '), 'UTF-8'),
                 ':chaveEn'  => mb_strtoupper(trim($dados[2], ' '), 'UTF-8'),
-                ':chaveEs'  => mb_strtoupper(trim($dados[3], ' '), 'UTF-8')
+                ':chaveEs'  => mb_strtoupper(trim($dados[3], ' '), 'UTF-8'),
+                ':status'   => 'AT'
             );
-            $cdChave = gravaChave($conn, $paramsChaves);
+            $cdChave = gravaChaveCsv($conn, $paramsChaves);
             if(is_numeric($cdChave)){
                 $contNovo++;
             }
@@ -57,10 +58,38 @@ else{
     if ($nivel != '') {
         getMenu($nivel);
         if (isset($_POST['newChave']) && $_POST['newChave'] == 'true') {
-            
+            if(isset($_POST['chavePt'],$_POST['chaveEn'],$_POST['chaveEs'])){
+                $chavePt = $_POST['chavePt'];
+                $params = array(
+                    ':chavePt' => $_POST['chavePt'], 
+                    ':chaveEn' => $_POST['chaveEn'], 
+                    ':chaveEs' => $_POST['chaveEs'], 
+                    ':status' => 'AT');
+                $cdChave = gravaChave($conn, $params);
+                if(is_numeric($cdChave)){
+                    echo "<script>okNewPage(`Nova chave (#$cdChave - $chavePt) adicionada com sucesso!`, 'chaves.php');</script>";
+                } else {
+                    echo $retorno;
+                }
+            }
         }
         else if (isset($_POST['editaChave']) && $_POST['editaChave'] == 'true') {
-            
+            if(isset($_POST['cdChave'],$_POST['chavePt'],$_POST['chaveEn'],$_POST['chaveEs'],$_POST['cmb_status'])){
+                $chavePt = $_POST['chavePt'];
+                $cdChave = $_POST['cdChave'];
+                $params = array(
+                    ':cdChave' => $_POST['cdChave'],
+                    ':chavePt' => $_POST['chavePt'], 
+                    ':chaveEn' => $_POST['chaveEn'], 
+                    ':chaveEs' => $_POST['chaveEs'], 
+                    ':status'  => $_POST['cmb_status']);
+                $retorno = alteraChave($conn, $params);
+                if($retorno == '0'){
+                    echo "<script>okNewPage('Chave (#$cdChave - $chavePt) alterada com sucesso!', 'chaves.php');</script>";
+                } else {
+                    echo $retorno;
+                }
+            }
         }
         else if(isset($_POST['cdChave'],$_POST['verChave']) && $_POST['verChave'] == 'true'){
             $arrChave = buscaChaveCod($conn, array(':cdChave' => $_POST['cdChave']));
@@ -76,24 +105,35 @@ else{
                                 <input type="hidden" name="editaChave" value="true">
                                 <p>Código da Palavra Chave <?=$arrChave[0]?></p>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="txtChave" id="txtChave" placeholder="Palavra Chave" value="<?=$arrChave[1]?>" required>
-                                    <label for="txtChave">Palavra Chave em Português</label>
+                                    <input type="text" class="form-control" name="chavePt" id="chavePt" placeholder="Palavra Chave" value="<?=$arrChave[1]?>" required>
+                                    <label for="chavePt">Palavra Chave em Português</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="txtChave" id="txtChave" placeholder="Palavra Chave" value="<?=$arrChave[2]?>" required>
-                                    <label for="txtChave">Palavra Chave em Inglês</label>
+                                    <input type="text" class="form-control" name="chaveEn" id="chaveEn" placeholder="Palavra Chave" value="<?=$arrChave[2]?>" required>
+                                    <label for="chaveEn">Palavra Chave em Inglês</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="txtChave" id="txtChave" placeholder="Palavra Chave" value="<?=$arrChave[3]?>" required>
-                                    <label for="txtChave">Palavra Chave em Espanhol</label>
+                                    <input type="text" class="form-control" name="chaveEs" id="chaveEs" placeholder="Palavra Chave" value="<?=$arrChave[3]?>" required>
+                                    <label for="chaveEs">Palavra Chave em Espanhol</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" aria-label="Floating label select example" id="cmb_status" name="cmb_status">
+                                        <?php
+                                        if ($arrChave[4] == 'AT') {
+                                            echo "<option value='AT' selected>Ativo</option>";
+                                            echo "<option value='IN' >Inativo</option>";
+                                        } else {
+                                            echo "<option value='AT' >Ativo</option>";
+                                            echo "<option value='IN' selected>Inativo</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                    <label for="cmb_nivel">Status:</label>
                                 </div>
                                 <br>
                                 <div class="center">
                                     <input type="button" id='btnVoltar' class="btn btn-secondary" value="Voltar" onClick="history.go(-1)">
                                     <input type="submit" id='btnAlterar' class="btn btn-success" value="Alterar">
-                                    <button type="button" class="btn btn-danger" id="btnExcluir">
-                                        Excluir
-                                    </button>
                                 </div>
                             </form>
                         </fildset>
@@ -154,11 +194,22 @@ else{
                     <div class="divMd">
                         <fildset>
                             <legend>Nova Palavra Chave</legend>
-                            <form action="chave.php" method="POST">
+                            <form method="POST">
                                 <input type="hidden" name="newChave" value="true">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="txtChave" id="txtChave" placeholder="Palavra Chave" required>
-                                    <label for="txtChave">Palavra Chave</label>
+                                    <input type="text" class="form-control" name="chavePt" id="chavePt" placeholder="Palavra Chave em Português" 
+                                     required>
+                                    <label for="chavePt">Palavra Chave em Português</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="chaveEn" id="chaveEn" placeholder="Palavra Chave em Inglês" 
+                                     required>
+                                    <label for="chaveEn">Palavra Chave em Inglês</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="chaveEs" id="chaveEs" placeholder="Palavra Chave em Espanhol" 
+                                     required>
+                                    <label for="chaveEs">Palavra Chave em Espanhol</label>
                                 </div>
                                 <div class="center">
                                     <input type="button" id='btnVoltar' class="btn btn-secondary" value="Voltar" onClick="history.go(-1)">
@@ -172,6 +223,7 @@ else{
             <?php
         }
         else{
+            $l = '';
             if(isset($_GET['b'])){
                 $arrChave = buscaChavePart($conn,array(':dsChave' => "%".strtoupper($_GET['b'])."%"));
             
@@ -189,20 +241,21 @@ else{
                     <br>
                     <h1>Palavras Chave</h1>
                     <hr>
-                    <div class="row">
-                    <div class="float-right col-6">
-                        <form action="chaves.php" method="POST">
-                            <input type="hidden" name="formNovaChave" value="novo">
-                            <input type="submit" class="btn btn-primary btn-lg" value="Nova Palavra Chave">
-                        </form>
+                    <div class="row justify-content-center align-items-center g-3">
+                        <div class="col-12 col-sm-auto">
+                            <form action="chaves.php" method="POST">
+                                <input type="hidden" name="formNovaChave" value="novo">
+                                <input type="submit" class="btn btn-primary btn-lg" value="Nova Palavra Chave">
+                            </form>
+                        </div>
+                        <div class="col-12 col-sm-auto">
+                            <form action="chaves.php" method="POST">
+                                <input type="hidden" name="formImportCsv" value="impCsv">
+                                <input type="submit" class="btn btn-primary btn-lg" value="Importar CSV">
+                            </form>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <form action="chaves.php" method="POST">
-                            <input type="hidden" name="formImportCsv" value="impCsv">
-                            <input type="submit" class="btn btn-primary btn-lg" value="Importar CSV">
-                        </form>
-                    </div>
-                    </div>
+                    <hr>
                     <br>
                     <form>
                         <div class="input-group mb-3">
@@ -219,11 +272,17 @@ else{
                     }
                         if (!empty($arrChave)) {
                             foreach ($arrChave as $dadoChave){
+                                if($dadoChave['ic_status'] == 'AT'){
+                                    $classCor = 'btn-outline-secondary';
+                                }
+                                else{
+                                    $classCor = 'btn-outline-danger';
+                                }
                                 echo"
                                 <form action='chaves.php' method=post>
                                     <input type='hidden' name='verChave' value='true'>
                                     <input type='hidden' name='cdChave' value='$dadoChave[0]'>
-                                    <input type='submit' class='btn btn-outline-secondary btn-md divMax topMarg4' value='$dadoChave[1]'>
+                                    <input type='submit' class='btn $classCor btn-md divMax topMarg4' value='$dadoChave[1]'>
                                 </form>";
                             }
                         }

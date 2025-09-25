@@ -42,7 +42,7 @@ function comparaTitulo($conn, $params){
 /*--------Modificado--------*/
 function buscaChave($conn){
     try {
-        $comandoSQL = "SELECT cd_chave, ds_chave_pt FROM tb_chave ORDER BY ds_chave_pt";
+        $comandoSQL = "SELECT cd_chave, ds_chave_pt, ic_status FROM tb_chave ORDER BY ds_chave_pt";
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_BOTH);
@@ -236,7 +236,7 @@ function buscaChaveStr($conn, $params)
 function buscaChavePart($conn, $params)
 {
     try {
-        $comandoSQL = "SELECT cd_chave, ds_chave_pt FROM  tb_chave WHERE ds_chave_pt LIKE TRIM(:dsChave)";
+        $comandoSQL = "SELECT cd_chave, ds_chave_pt, ic_status FROM  tb_chave WHERE ds_chave_pt LIKE TRIM(:dsChave)";
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_BOTH);
@@ -246,15 +246,42 @@ function buscaChavePart($conn, $params)
     }
 }
 /*--------Modificado--------*/
-function gravaChave($conn, $params)
+function gravaChaveCsv($conn, $params)
 {
     try {
-        $comandoSQL = "INSERT INTO tb_chave (cd_chave, ds_chave_pt, ds_chave_en, ds_chave_es) VALUE (:cdChave, :chavePt, :chaveEn, :chaveEs)";
+        $comandoSQL = "INSERT INTO tb_chave (cd_chave, ds_chave_pt, ds_chave_en, ds_chave_es, ic_status) VALUE (:cdChave, :chavePt, :chaveEn, :chaveEs, :status)";
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute($params);
         return $conn->lastInsertId();
     } catch (PDOException $Exception) {
         return "INSERT CHAVE - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
+    }
+}
+function gravaChave($conn, $params)
+{
+    try {
+        $comandoSQL = "INSERT INTO tb_chave (ds_chave_pt, ds_chave_en, ds_chave_es, ic_status) VALUE (:chavePt, :chaveEn, :chaveEs, :status)";
+        $stmt = $conn->prepare($comandoSQL);
+        $stmt->execute($params);
+        return $conn->lastInsertId();
+    } catch (PDOException $Exception) {
+        return "INSERT CHAVE - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
+    }
+}
+function alteraChave($conn, $params){
+    try {
+        $comandoSQL = "UPDATE tb_chave SET ds_chave_pt = :chavePt, ds_chave_en = :chaveEn, ds_chave_es = :chaveEs, ic_status = :status WHERE cd_chave = :cdChave";
+        
+        $stmt = $conn->prepare($comandoSQL);
+        $linhasafetadas = $stmt->execute($params);
+        if ($linhasafetadas == 1) {
+            return '0';
+        }
+        else{
+            return '1';
+        }
+    } catch (PDOException $Exception) {
+        return "UPDATE STATUS TRABALHO - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
     }
 }
 function gravaChaveTrabalho($conn, $params)

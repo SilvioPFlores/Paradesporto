@@ -1,9 +1,9 @@
 <?php
-function buscaChave($conn)
+function buscaChave($conn, $lang)
 {
     try {
         //SELECT
-        $comandoSQL = "SELECT cd_chave, ds_chave FROM tb_chave ORDER BY ds_chave";
+        $comandoSQL = "SELECT cd_chave, ds_chave_$lang FROM tb_chave ORDER BY ds_chave_$lang";
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_BOTH);
@@ -11,10 +11,10 @@ function buscaChave($conn)
         echo "SELECT CHAVE - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
     }
 }
-function buscaChaveStr($conn, $params){
+function buscaChaveStr($conn, $lang, $params){
     try {
         //SELECT
-        $comandoSQL = "SELECT cd_chave, ds_chave FROM tb_chave WHERE ds_chave LIKE :str ORDER BY ds_chave";
+        $comandoSQL = "SELECT cd_chave, ds_chave_$lang FROM tb_chave WHERE ds_chave_$lang LIKE :str ORDER BY ds_chave_$lang";
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_BOTH);
@@ -23,10 +23,10 @@ function buscaChaveStr($conn, $params){
     }
 }
 
-function buscaChaveLetra($conn, $params){
+function buscaChaveLetra($conn, $lang, $params){
     try {
         //SELECT
-        $comandoSQL = "SELECT cd_chave, ds_chave FROM tb_chave WHERE ds_chave LIKE :letra ORDER BY ds_chave";
+        $comandoSQL = "SELECT cd_chave, ds_chave_$lang FROM tb_chave WHERE ds_chave_$lang LIKE :letra ORDER BY ds_chave_$lang";
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_BOTH);
@@ -70,7 +70,7 @@ function buscaAutorStr($conn, $params){
 function buscaTitulo($conn){
     try {
         //SELECT
-        $comandoSQL = "SELECT cd_trabalho, ds_titulo FROM tb_trabalho WHERE ic_status = 'AT' ORDER BY replace(replace(replace(ds_titulo,'‘',''),'“',''),'(','')";
+        $comandoSQL = "SELECT cd_trabalho, ds_titulo FROM tb_trabalho WHERE ic_status = 'AT' ORDER BY replace(replace(replace(ds_titulo,'\'',''),'\"',''),'(','')";
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_BOTH);

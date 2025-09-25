@@ -6,16 +6,17 @@ include 'includes/head.php';
 getHead($lang['titulo'], $lang);
 include '../includes/menu.php';
 menu($lang['repositUp']);
+$l = '';
 if(isset($_GET['b'])){
-    $arrChave = buscaChaveStr($conn,array(':str' => "%".strtoupper($_GET['b'])."%"));
+    $arrChave = buscaChaveStr($conn, $lang['lang'], array(':str' => "%".strtoupper($_GET['b'])."%"));
 
 }
 else if(isset($_GET['l'])){
-    $arrChave = buscaChaveLetra($conn,array(':letra' => $_GET['l'].'%'));
+    $arrChave = buscaChaveLetra($conn, $lang['lang'], array(':letra' => $_GET['l'].'%'));
     $l = $_GET['l'];
 }
 else{
-    $arrChave = buscaChave($conn);
+    $arrChave = buscaChave($conn, $lang['lang']);
 }
 ?>
 <div class="container">
