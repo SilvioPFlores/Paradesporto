@@ -135,25 +135,12 @@ function buscaAutorCod($conn, $params){
 function gravaTrabalho ($conn, $params)
 {
     try {
-        /*//solução para tratar data de publicação em branco
-        if(isset($params[':dtPublic'])){
-            $comandoSQL = "INSERT INTO tb_trabalho 
-            ( ds_titulo, ds_revista, ano_public, ds_volume, ds_pagina, ds_instituicao, dt_public, dt_consulta, ds_url, ds_doi, ds_cidade, ic_publico, cd_tipo, ic_status ) 
-            VALUE 
-            ( :titulo, :revista, :anoPublic, :volume, :pagina, :instit, STR_TO_DATE(:dtPublic,'%d/%m/%Y'), STR_TO_DATE(:dtConsulta,'%d/%m/%Y'), :url, :doi, :cidade, :publico, :cdTipo, :status )";
-        }
-        else{
-            $comandoSQL = "INSERT INTO tb_trabalho 
-            ( ds_titulo, ds_revista, ano_public, ds_volume, ds_pagina, ds_instituicao, dt_consulta, ds_url, ds_doi, ds_cidade, ic_publico, cd_tipo, ic_status ) 
-            VALUE 
-            ( :titulo, :revista, :anoPublic, :volume, :pagina, :instit, STR_TO_DATE(:dtConsulta,'%d/%m/%Y'), :url, :doi, :cidade, :publico, :cdTipo, :status )";
-        }*/
         $comandoSQL = "INSERT INTO tb_trabalho 
-            (`ds_titulo`, `cd_tipo`, `ds_revista`, `ano_public`, `ds_volume`, `ds_pagina`, `ds_instituicao`, `ds_cidade`, `ds_editora`, 
-            `ds_isbn`, `dt_public`, `dt_consulta`, `ds_url`, `ds_doi`, `nm_arquivo`, `ic_publico`, `cd_usuario`, `ic_status`)
+            (`ds_titulo`, `cd_tipo`, `ds_publicado_por`, `ano_public`, `ds_volume`, `ds_pagina`, `ds_cidade`, `ds_isbn`,
+            `dt_consulta`, `ds_url`, `nm_arquivo`, `ic_publico`, `cd_usuario`, `ic_status`)
             VALUE 
-            ( :titulo, :cdTipo, :revista, :anoPublic, :volume, :pagina, :instit, :cidade, :editora, :isbn, STR_TO_DATE(:dtPublic,'%d/%m/%Y'),
-            STR_TO_DATE(:dtConsulta,'%d/%m/%Y'), :url, :doi, :nomeArquivo, :publico, :cdUsuario, :status )";
+            ( :titulo, :cdTipo, :publicadoPor, :anoPublic, :volume, :pagina, :cidade, :isbn,
+            STR_TO_DATE(:dtConsulta,'%d/%m/%Y'), :url, :nomeArquivo, :publico, :cdUsuario, :status )";
         
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute($params);
@@ -318,7 +305,7 @@ function buscaAutorStr($conn, $params)
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute($params);
         $retorno = $stmt->fetch(PDO::FETCH_BOTH);
-        return $retorno[0];
+        return $retorno ? $retorno[0] : '';
     } catch (PDOException $Exception) {
         return "SELECT COD AUTOR - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
     }

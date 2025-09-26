@@ -7,6 +7,7 @@
 /congresso/midia/
 /producao/conteudo/
 /repositorio/trabalhos/
+/admin/csv/
 
 #configuração
 uploads.ini

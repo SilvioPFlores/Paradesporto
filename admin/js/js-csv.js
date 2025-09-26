@@ -48,7 +48,6 @@ $(document).ready(function () {
                 var txt = '';
                 var booOk = false;
                 var booErro = false;
-                //var booDuplicado = false;
                 if(obj['novo'] != '0'){
                     txt = 'Foram adicionados ' + obj['novo'] + ' titulos novos!\n\r';
                     booOk = true;
@@ -56,15 +55,7 @@ $(document).ready(function () {
                 if(obj['erro'] > 0){
                     txt += 'Ocorreram '+ obj['erro'] + ' erros ao adicioanar os trabalhos!';
                     var booErro = true;
-                }/*
-                if(obj['duplicado'] != '0'){
-                    txt += 'Encontramos '+ obj['duplicado'] + ' titulos duplicados!\n\rDeseja verificar?';
-                    //var booDuplicado = true;
-                }
-                if(booDuplicado){
-                    alertConfirmNewPage(txt,'consulta.php','duplicados.php');
-                }
-                else */if(booErro){
+                }if(booErro){
                     alertNewPage(txt,'consulta.php');
                 }
                 else if(booOk){
