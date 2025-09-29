@@ -13,17 +13,14 @@ if(isset($_POST['hdnEnviaMaterial']) && $_POST['hdnEnviaMaterial'] == 'novoMater
         if($cdUsuario == ''){
             $cdUsuario = gravaUsuario($conn, array(':nome' => $_POST['txtNome'], ':mail' => $_POST['txtMail'], ':fone' => $_POST['full_number'], ':nacio' => $_POST['txtNacio'], ':status' => 'AT'));
         }
-        if(isset($_POST['cmbTipoTrabalho'],$_POST['titulo'],$_POST['revista'],$_POST['editora'],$_POST['isbn'],$_POST['ano'],$_POST['pag'],$_POST['volume'],$_POST['cidade'],$_POST['instit'],$_POST['data'],$_POST['url'],$_POST['doi'],$_POST['hdnNameTrabalho'])){
+        if(isset($_POST['cmbTipoTrabalho'],$_POST['titulo'],$_POST['publicadoPor'],$_POST['isbn'],$_POST['ano'],$_POST['pag'],$_POST['volume'],$_POST['cidade'],$_POST['url'],$_POST['hdnNameTrabalho'])){
             $paramsTrabalho = array(
                 ':titulo'       => trim($_POST['titulo']),
-                ':revista'      => trim($_POST['revista']),
+                ':publicadoPor' => trim($_POST['publicadoPor']),
                 ':anoPublic'    => trim($_POST['ano']),
                 ':volume'       => trim($_POST['volume']),
                 ':pagina'       => trim($_POST['pag']),
-                ':instit'       => trim($_POST['instit']),
                 ':url'          => trim($_POST['url']),
-                ':doi'          => trim($_POST['doi']),
-                ':editora'      => trim($_POST['editora']),
                 ':isbn'         => trim($_POST['isbn']),
                 ':cidade'       => trim($_POST['cidade']),
                 ':publico'      => 'S',
@@ -32,10 +29,6 @@ if(isset($_POST['hdnEnviaMaterial']) && $_POST['hdnEnviaMaterial'] == 'novoMater
                 ':cdUsuario'    => $cdUsuario,
                 ':status'       => 'IN'
             );
-            //solução para tratar data em branco
-            if(trim($_POST['data']) != ''){
-                $paramsTrabalho[':dtPublic'] = trim($_POST['data']);
-            }
             $cdTrabalho = gravaTrabalho ($conn, $paramsTrabalho);
             if(is_numeric($cdTrabalho)){
                 if(isset($_POST['chkChave'])){
@@ -44,7 +37,7 @@ if(isset($_POST['hdnEnviaMaterial']) && $_POST['hdnEnviaMaterial'] == 'novoMater
                     }
                 }
                 if(isset($_POST['autor'])){
-                    $arrAutor = explode (",", $_POST['autor']);
+                    $arrAutor = explode (";", $_POST['autor']);
                     for($i = 0; $i < count($arrAutor); $i++){
                         $strAutor = mb_strtoupper(trim($arrAutor[$i], ' '), 'UTF-8');
                         $cdAutor = buscaAutorStr2($conn, array(':dsAutor' => $strAutor));
@@ -83,7 +76,7 @@ else{
     getHead($lang['titulo'], $lang, '', 'css/css-material.css', 'js/js-material.js');
     include '../includes/menu.php';
     menu($lang['repositUp']);
-    $arrChave = buscaChave($conn);
+    $arrChave = buscaChave($conn, $lang['lang']);
     $arrTpTrab = buscaTipoTrabalho($conn, $lang['lang']);
     ?>
     <div class="container">
@@ -128,72 +121,50 @@ else{
                         <option selected value=''><?=$lang['selecione']?></option>
                         <?php
                         foreach($arrTpTrab as $dadoTpTrab){
-                            if($dadoTpTrab[0] == 4){
-                                $iten = 'Relatório';
-                            }
-                            else{
-                                $iten = $dadoTpTrab[1];
-                            }
-                            echo "<option value='$dadoTpTrab[0]'>$iten</option>";
+                            echo "<option value='$dadoTpTrab[0]'>$dadoTpTrab[1]</option>";
                         }
                         ?>
                     </select>
                 </div>
                 <div class="col-md-12">
                     <label class="form-label" for="autor"><?=$lang['autorTrab']?><span class="req"> *</span></label>
-                    <input type="text" class="form-control" name="autor" id="autor" placeholder="Alves C, Prado DT..." maxlength="50" required>
+                    <input type="text" class="form-control" name="autor" id="autor" placeholder="Alves, C.; Prado, D.T." maxlength="50" required>
                 </div>
                 <div class="col-md-12">
                     <label class="form-label" for="titulo"><?=$lang['pTitulo']?><span class="req"> *</span></label>
                     <input type="text" class="form-control" name="titulo" id="titulo" maxlength="500" required>
                 </div>
-                <div class="col-md-12 cd0 cd8">
-                    <label class="form-label" for="revista"><?=$lang['revista']?><span class="req"> *</span></label>
-                    <input type="text" class="form-control in0 in8" name="revista" id="revista" maxlength="100">
+                <div class="col-md-12">
+                    <label class="form-label" for="publicadoPor"><?=$lang['publicPor']?> <i class="bi bi-info-circle-fill" title="<?= $lang['publicPorInfo']?>"></i><span class="req"> *</span></label>
+                    <input type="text" class="form-control" name="publicadoPor" id="publicadoPor" maxlength="100">
                 </div>
-                <div class="col-md-6 cd0 cd3 cd5">
-                    <label class="form-label" for="editora"><?=$lang['editora']?><span class="req"> *</span></label>
-                    <input type="text" class="form-control in0 in3 in5" name="editora" id="editora" maxlength="200">
+                <div class="col-md-6">
+                    <label class="form-label" for="isbn"><?=$lang['isbn']?></label>
+                    <input type="text" class="form-control" name="isbn" id="isbn" maxlength="20">
                 </div>
-                <div class="col-md-6 cd0 cd3 cd5">
-                    <label class="form-label" for="isbn"><?=$lang['isbn']?><span class="req"> *</span></label>
-                    <input type="text" class="form-control in0 in3 in5" name="isbn" id="isbn" maxlength="20">
+                <div class="col-md-6">
+                    <label class="form-label" for="cidade"><?=$lang['cidade']?></label>
+                    <input type="text" class="form-control" name="cidade" id="cidade" maxlength="100">
                 </div>
-                <div class="col-md-4 cd0 cdAll">
+                <div class="col-md-4">
                     <label class="form-label" for="ano"><?=$lang['anoPublic']?></label>
                     <input type="number" class="form-control" name="ano" id="ano" maxlength="4">
                 </div>
-                <div class="col-md-4 cd0 cd1 cd2 cd3 cd4 cd5 cd8">
-                    <label class="form-label" for="pag"><?=$lang['paginas']?><span class="req"> *</span></label>
-                    <input type="text" class="form-control in0 in1 in2 in3 in4 in5 in8" name="pag" id="pag" placeholder="145-223" maxlength="15">
+                <div class="col-md-4">
+                    <label class="form-label" for="pag"><?=$lang['paginas']?></label>
+                    <input type="text" class="form-control" name="pag" id="pag" placeholder="145-223" maxlength="15">
                 </div>
-                <div class="col-md-4 cd0 cd1 cd2 cd4 cd8">
-                    <label class="form-label" for="volume"><?=$lang['volume']?><span class="req"> *</span></label>
-                    <input type="number" class="form-control in0 in1 in2 in4 in8" name="volume" id="volume" maxlength="5">
+                <div class="col-md-4">
+                    <label class="form-label" for="volume"><?=$lang['volume']?></label>
+                    <input type="number" class="form-control" name="volume" id="volume" maxlength="5">
                 </div>
-                <div class="col-md-4 cd0 cdAll">
-                    <label class="form-label" for="cidade"><?=$lang['cidade']?><span class="req"> *</span></label>
-                    <input type="text" class="form-control in0 inAll" name="cidade" id="cidade" maxlength="100">
-                </div>
-                <div class="col-md-8 cd0 cd1 cd2 cd4 cd6">
-                    <label class="form-label" for="instit"><?=$lang['instit']?><span class="req"> *</span></label>
-                    <input type="text" class="form-control in0 in1 in2 in4 in6" name="instit" id="instit" maxlength="200">
-                </div>
-                <div class="col-md-4 cd0 cd1 cd2 cd4 cd8">
-                    <label class="form-label" for="data"><?=$lang['dtPublic']?></label>
-                    <input type="date" class="form-control" name="data" id="data" >
-                </div>
-                <div class="col-md-12 cd0 cdAll">
+                <div class="col-md-12">
                     <label class="form-label" for="url"><?=$lang['url']?><span class="req"> *</span></label>
-                    <input type="url" class="form-control in0 inAll" name="url" id="url" maxlength="2000">
+                    <input type="url" class="form-control" name="url" id="url" maxlength="2000" required>
                 </div>
-                <div class="col-md-12 cd0 cdAll">
-                    <label class="form-label" for="doi"><?=$lang['doi']?></label>
-                    <input type="url" class="form-control" name="doi" id="doi"  maxlength="500">
-                </div>
-                <div class="col-md-9 cd0 cdAll">
+                <div class="col-md-9">
                     <label for="trabalhoPDF" class="form-label"><?=$lang['trabalhoPdf']?><span class="req"> *</span></label>
-                    <input class="form-control in0 inAll" type="file" id="trabalhoPDF" name='trabalhoPDF'>
+                    <input class="form-control" type="file" id="trabalhoPDF" name='trabalhoPDF'>
                     <div id="trabalhoFeedback" class="invalid-feedback"> </div>
                     <br>
                     <div class="progress" style="display: none;">

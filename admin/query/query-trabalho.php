@@ -26,19 +26,6 @@ function gravaCsvTrabalho($conn, $params)
         return "INSERT CSV TRABALHO - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
     }
 }
-/*--------inativar--------*/
-function comparaTitulo($conn, $params){
-    try {
-        $comandoSQL = "SELECT cd_trabalho FROM tb_trabalho WHERE ds_titulo LIKE :titulo AND ic_status = 'AT'";
-        $stmt = $conn->prepare($comandoSQL);
-        $stmt->execute($params);
-        //return $stmt->fetch(PDO::FETCH_BOTH);
-        $retorno = $stmt->fetch(PDO::FETCH_BOTH);
-        return $retorno[0];
-    } catch (PDOException $Exception) {
-        return "SELECT COMPARA - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
-    }
-}
 /*--------Modificado--------*/
 function buscaChave($conn){
     try {
@@ -83,10 +70,10 @@ function buscaTipoTrabalho($conn){
 }
 function buscaTrabalhoCod($conn, $params){
     try {
-        $comandoSQL = "SELECT ds_titulo, ds_revista, ds_editora, ds_isbn, ano_public, ds_pagina, ds_volume, ds_cidade, ds_instituicao, dt_public, dt_consulta, ds_url, ds_doi, nm_arquivo, ic_publico, cd_tipo, ic_status FROM tb_trabalho WHERE cd_trabalho = :cdTrabalho";
+        $comandoSQL = "SELECT ds_titulo, ds_publicado_por, ds_isbn, ano_public, ds_pagina, ds_volume, ds_cidade, dt_consulta, ds_url, nm_arquivo, ic_publico, cd_tipo, ic_status FROM tb_trabalho WHERE cd_trabalho = :cdTrabalho";
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute($params);
-        return $stmt->fetch(PDO::FETCH_BOTH);
+        return $stmt->fetchObject();
     } catch (PDOException $Exception) {
         return "SELECT TRABALHO COD - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
     }
@@ -164,11 +151,8 @@ function alteraTrabalho ($conn, $params)
 {
     try {
         $comandoSQL = "UPDATE tb_trabalho SET
-            ds_titulo = :titulo, ds_revista = :revista, ano_public = :anoPublic, ds_volume = :volume, ds_pagina = :pagina, ds_instituicao = :instit";
+            ds_titulo = :titulo, ds_publicado_por = :publicadoPor, ano_public = :anoPublic, ds_volume = :volume, ds_pagina = :pagina";
         
-        if(isset($params[':dtPublic'])){
-            $comandoSQL .= ", dt_public = :dtPublic";
-        }
         if(isset($params[':dtConsulta'])){
             $comandoSQL .= ", dt_consulta = :dtConsulta";
         }
@@ -176,7 +160,7 @@ function alteraTrabalho ($conn, $params)
         if(isset($params[':status'])){
             $comandoSQL .= ",ic_status = :status, dt_consulta = NOW()";
         }
-        $comandoSQL .= ", ds_url = :url, ds_doi = :doi, ds_editora = :editora, ds_isbn = :isbn, ds_cidade = :cidade, nm_arquivo = :nmArquivo, ic_publico = :publico, cd_tipo = :cdTipo
+        $comandoSQL .= ", ds_url = :url, ds_isbn = :isbn, ds_cidade = :cidade, nm_arquivo = :nmArquivo, ic_publico = :publico, cd_tipo = :cdTipo
             WHERE cd_trabalho = :cdTrabalho";
         
         $stmt = $conn->prepare($comandoSQL);
@@ -214,7 +198,7 @@ function buscaChaveStr($conn, $params)
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute($params);
         $retorno = $stmt->fetch(PDO::FETCH_BOTH);
-        return $retorno[0];
+        return $retorno ? $retorno[0] : '';
     } catch (PDOException $Exception) {
         return "SELECT COD CHAVE - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
     }
@@ -227,7 +211,6 @@ function buscaChavePart($conn, $params)
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_BOTH);
-        //return $retorno[0];
     } catch (PDOException $Exception) {
         return "SELECT COD CHAVE - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
     }

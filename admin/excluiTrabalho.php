@@ -7,7 +7,7 @@ if(isset($_GET['motivo'], $_GET['cdTrabalho'])){
     $paramsCdTrabalho = array(':cdTrabalho' => $_GET['cdTrabalho']);
     $dsTitulo = buscaTrabalhoCod($conn, $paramsCdTrabalho);
     //Gravando as informações para excluir o trabalho
-    gravaExcluiTrabalho($conn, array(':dsTitulo' => $dsTitulo[0], ':cdUser' => $cdUser, ':dsMotivo' => $_GET['motivo']));
+    gravaExcluiTrabalho($conn, array(':dsTitulo' => $dsTitulo->ds_titulo, ':cdUser' => $cdUser, ':dsMotivo' => $_GET['motivo']));
     //excluir o cdTrabalho das tabelas relacionadas
     excluiAutorTrabalho($conn, $paramsCdTrabalho);
     excluiChaveTrabalho($conn, $paramsCdTrabalho);

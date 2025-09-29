@@ -35,18 +35,15 @@ else{
             $origem = '../repositorio/trabalhos/valid/'.$_POST['hdnNomeTrab'];
             $destino = $dir . $new_name;
             
-            if(isset($_POST['revista'],$_POST['ano'],$_POST['volume'],$_POST['pag'],$_POST['instit'],$_POST['data'],$_POST['url'],$_POST['doi'],$_POST['editora'],$_POST['isbn'],$_POST['cidade'],$_POST['cmbTipoTrabalho'])){
+            if(isset($_POST['publicadoPor'],$_POST['ano'],$_POST['volume'],$_POST['pag'],$_POST['url'],$_POST['isbn'],$_POST['cidade'],$_POST['cmbTipoTrabalho'])){
                 $paramsTrabalho = array(
                     ':cdTrabalho'   => $cdTrabalho,
                     ':titulo'       => trim($_POST['titulo']),
-                    ':revista'      => trim($_POST['revista']),
+                    ':publicadoPor' => trim($_POST['publicadoPor']),
                     ':anoPublic'    => trim($_POST['ano']),
                     ':volume'       => trim($_POST['volume']),
                     ':pagina'       => trim($_POST['pag']),
-                    ':instit'       => trim($_POST['instit']),
                     ':url'          => trim($_POST['url']),
-                    ':doi'          => trim($_POST['doi']),
-                    ':editora'      => trim($_POST['editora']),
                     ':isbn'         => trim($_POST['isbn']),
                     ':cidade'       => trim($_POST['cidade']),
                     ':nmArquivo'    => $new_name,
@@ -54,10 +51,6 @@ else{
                     ':status'       => 'AT',
                     ':cdTipo'       => trim($_POST['cmbTipoTrabalho'])
                 );
-                //solução para tratar data em branco
-                if(trim($_POST['data']) != ''){
-                    $paramsTrabalho[':dtPublic'] = trim($_POST['data']);
-                }
                 $cdUpTrab = alteraTrabalho ($conn, $paramsTrabalho);
             }
             if(isset($_POST['chkChave'])){
@@ -80,7 +73,7 @@ else{
             }
             //rotina para excluir autores e chaves que não possuam trabalhos
             excluiAutorSemTrabalho($conn);
-            excluiChaveSemTrabalho($conn);
+            //excluiChaveSemTrabalho($conn);
             //Movendo o arquivo da base provisória para base de produção
             copy($origem, $destino);
             unlink($origem);
@@ -110,10 +103,10 @@ else{
                 $arrAutor = buscaAutorCod($conn, $paramsTrabalho);
                 $strAutor = '';
                 foreach ($arrAutor as $dadoAutor){
-                    $strAutor .= $dadoAutor[0].', ';
+                    $strAutor .= $dadoAutor[0].'; ';
                 }
-                $arrTrabalho[count($arrTrabalho)] = rtrim($strAutor, ", ");
-                $arrTrabalho[count($arrTrabalho)] = buscaChaveTrabCod($conn, $paramsTrabalho);
+                $arrTrabalho->strAutor = rtrim($strAutor, "; ");
+                $arrTrabalho->chaves = buscaChaveTrabCod($conn, $paramsTrabalho);
                 ?>
                 <!-- Bloco Página -->
                 <div class="container">
@@ -133,7 +126,7 @@ else{
                             <div class="text-center">
                                 <input type="button" id="btnVoltar" name="btnVoltar" class="btn btn-secondary" value="Voltar" onclick="window.location.href='trabalhoAutor.php';">
                                 <?php
-                                if($arrTrabalho[16] == 'IN'){
+                                if($arrTrabalho->ic_status == 'IN'){
                                     ?>
                                     <input type="button" id="btnRecusar" name="btnRecusar" class="btn btnLaranja" value="Recusar">
                                     <input type="submit" id="btnEnviaForm" name="enviar" class="btn btn-success" value="Aceitar">

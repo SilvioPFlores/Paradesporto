@@ -11,3 +11,7 @@
 
 #configuração
 uploads.ini
+
+#envio de e-mail
+/repositorio/email/enviaEmail.php
+/admin/email/enviaEmail.php

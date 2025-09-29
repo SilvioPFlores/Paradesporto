@@ -17,18 +17,15 @@ if(isset($_FILES['trabalhoPDF'], $_POST['upTrabalho'], $_POST['cdTrabalho'], $_P
             $dir = '../repositorio/trabalhos/';
             move_uploaded_file($_FILES['trabalhoPDF']['tmp_name'], $dir . $new_name);
         }
-        if(isset($_POST['revista'],$_POST['ano'],$_POST['volume'],$_POST['pag'],$_POST['instit'],$_POST['data'],$_POST['dtAcesso'],$_POST['url'],$_POST['doi'],$_POST['rdPublico'],$_POST['cmbTipoTrabalho'])){
+        if(isset($_POST['publicadoPor'],$_POST['ano'],$_POST['volume'],$_POST['pag'],$_POST['url'],$_POST['isbn'],$_POST['cidade'],$_POST['cmbTipoTrabalho'])){
             $paramsTrabalho = array(
                 ':cdTrabalho'   => $cdTrabalho,
                 ':titulo'       => trim($_POST['titulo']),
-                ':revista'      => trim($_POST['revista']),
+                ':publicadoPor' => trim($_POST['publicadoPor']),
                 ':anoPublic'    => trim($_POST['ano']),
                 ':volume'       => trim($_POST['volume']),
                 ':pagina'       => trim($_POST['pag']),
-                ':instit'       => trim($_POST['instit']),
                 ':url'          => trim($_POST['url']),
-                ':doi'          => trim($_POST['doi']),
-                ':editora'      => trim($_POST['editora']),
                 ':isbn'         => trim($_POST['isbn']),
                 ':cidade'       => trim($_POST['cidade']),
                 ':nmArquivo'    => $new_name,
@@ -36,9 +33,6 @@ if(isset($_FILES['trabalhoPDF'], $_POST['upTrabalho'], $_POST['cdTrabalho'], $_P
                 ':cdTipo'       => trim($_POST['cmbTipoTrabalho'])
             );
             //solução para tratar data em branco
-            if(trim($_POST['data']) != ''){
-                $paramsTrabalho[':dtPublic'] = trim($_POST['data']);
-            }
             if(trim($_POST['dtAcesso']) != ''){
                 $paramsTrabalho[':dtConsulta'] = trim($_POST['dtAcesso']);
             }
@@ -52,7 +46,7 @@ if(isset($_FILES['trabalhoPDF'], $_POST['upTrabalho'], $_POST['cdTrabalho'], $_P
         }
         if(isset($_POST['autor'])){
             $contDel = excluiAutorTrabalho($conn, array(':cdTrabalho' => $cdTrabalho));
-            $arrAutor = explode (",", $_POST['autor']);
+            $arrAutor = explode (";", $_POST['autor']);
             for($i = 0; $i < count($arrAutor); $i++){
                 $strAutor = mb_strtoupper(trim($arrAutor[$i], ' '), 'UTF-8');
                 $cdAutor = buscaAutorStr($conn, array(':dsAutor' => $strAutor));
@@ -64,7 +58,7 @@ if(isset($_FILES['trabalhoPDF'], $_POST['upTrabalho'], $_POST['cdTrabalho'], $_P
         }
         //rotina para excluir autores e chaves que não possuam trabalhos
         excluiAutorSemTrabalho($conn);
-        excluiChaveSemTrabalho($conn);
+        //excluiChaveSemTrabalho($conn);
         echo "$cdUpTrab$cdUpChave$cdUpAut|$tam";
     }
 }
@@ -77,15 +71,16 @@ else if(isset($_POST['cdTrabalho'])){
         getMenu($nivel);
         include_once 'includes/forms/form-trabalho.php';
         $arrChave = buscaChave($conn);
-        $arrTrabalho = buscaTrabalhoCod($conn, array(':cdTrabalho' => $_POST['cdTrabalho']));
+        $paramsTrabalho = array(':cdTrabalho' => $_POST['cdTrabalho']);
+        $arrTrabalho = buscaTrabalhoCod($conn, $paramsTrabalho);
         $arrTpTrab = buscaTipoTrabalho($conn);
-        $arrAutor = buscaAutorCod($conn, array(':cdTrabalho' => $_POST['cdTrabalho']));
+        $arrAutor = buscaAutorCod($conn, $paramsTrabalho);
         $strAutor = '';
-        foreach ($arrAutor as $dadoAutor){
-            $strAutor .= $dadoAutor[0].', ';
-        }
-        $arrTrabalho[count($arrTrabalho)] = rtrim($strAutor, ", ");
-        $arrTrabalho[count($arrTrabalho)] = buscaChaveTrabCod($conn, array(':cdTrabalho' => $_POST['cdTrabalho']));
+            foreach ($arrAutor as $dadoAutor){
+                $strAutor .= $dadoAutor[0].'; ';
+            }
+            $arrTrabalho->strAutor = rtrim($strAutor, "; ");
+            $arrTrabalho->chaves = buscaChaveTrabCod($conn, $paramsTrabalho);
         ?>
         <!-- Bloco Página -->
         <div class="container">

@@ -25,10 +25,10 @@ function emailAceita($nome, $email, $cdTrabalho)
        //Recipients
         $mail->setFrom(REMET, encodeToIso(REMETENTE));
         $mail->addAddress($email, encodeToIso($nome));
-        $mail->addBCC('ruthcidade@gmail.com', 'Ruth Cidade');
-        $mail->addBCC('silvio.flores@unifesp.br', 'Silvio Flores');
-        $mail->addBCC('ciro.winckler@unifesp.br.br', 'Ciro Winckler');
-        /*$mail->addBCC('sonicvsticoeteco@gmail.com', 'Developer');*/
+        //$mail->addBCC('ruthcidade@gmail.com', 'Ruth Cidade');
+        //$mail->addBCC('silvio.flores@unifesp.br', 'Silvio Flores');
+        //$mail->addBCC('ciro.winckler@unifesp.br.br', 'Ciro Winckler');
+        $mail->addBCC('sonicvsticoeteco@gmail.com', 'Developer');
         //Content
         $mail->isHTML(true);    //Set email format to HTML
         $mail->Subject = encodeToIso(ASSUNTO);

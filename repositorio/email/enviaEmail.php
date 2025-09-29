@@ -25,9 +25,9 @@ function smtpmailer($nome, $email, $cdTrabalho)
         //Recipients
         $mail->setFrom(REMET, encodeToIso(REMETENTE));
         $mail->addAddress($email, encodeToIso($nome));
-        $mail->addBCC('ruthcidade@gmail.com', 'Ruth Cidade');
-        $mail->addBCC('silvio.flores@unifesp.br', 'Developer');
-        //$mail->addBCC('sonicvsticoeteco@gmail.com', 'Developer');
+        //$mail->addBCC('ruthcidade@gmail.com', 'Ruth Cidade');
+        //$mail->addBCC('silvio.flores@unifesp.br', 'Developer');
+        $mail->addBCC('sonicvsticoeteco@gmail.com', 'Developer');
 
         //Content
         $mail->isHTML(true);    //Set email format to HTML

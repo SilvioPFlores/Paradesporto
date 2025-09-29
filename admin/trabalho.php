@@ -17,18 +17,15 @@ if(isset($_POST['newTrabalho'], $_POST['cmbTipoTrabalho']) && $_POST['newTrabalh
                 $dir = '../repositorio/trabalhos/';
                 move_uploaded_file($_FILES['trabalhoPDF']['tmp_name'], $dir . $new_name);
             }
-            if(isset($_POST['revista'],$_POST['ano'],$_POST['volume'],$_POST['pag'],$_POST['instit'],$_POST['data'],$_POST['dtAcesso'],$_POST['url'],$_POST['doi'],$_POST['rdPublico'],$_POST['cmbTipoTrabalho'])){
+            if(isset($_POST['publicadoPor'],$_POST['ano'],$_POST['volume'],$_POST['pag'],$_POST['dtAcesso'],$_POST['url'],$_POST['rdPublico'],$_POST['cmbTipoTrabalho'])){
                 $paramsTrabalho = array(
                     ':cdTrabalho'   => $cdTrabalho,
                     ':titulo'       => trim($_POST['titulo']),
-                    ':revista'      => trim($_POST['revista']),
+                    ':publicadoPor' => trim($_POST['publicadoPor']),
                     ':anoPublic'    => trim($_POST['ano']),
                     ':volume'       => trim($_POST['volume']),
                     ':pagina'       => trim($_POST['pag']),
-                    ':instit'       => trim($_POST['instit']),
                     ':url'          => trim($_POST['url']),
-                    ':doi'          => trim($_POST['doi']),
-                    ':editora'      => trim($_POST['editora']),
                     ':isbn'         => trim($_POST['isbn']),
                     ':cidade'       => trim($_POST['cidade']),
                     ':nmArquivo'    => $new_name,
@@ -36,9 +33,6 @@ if(isset($_POST['newTrabalho'], $_POST['cmbTipoTrabalho']) && $_POST['newTrabalh
                     ':cdTipo'       => trim($_POST['cmbTipoTrabalho'])
                 );
                 //solução para tratar data em branco
-                if(trim($_POST['data']) != ''){
-                    $paramsTrabalho[':dtPublic'] = trim($_POST['data']);
-                }
                 if(trim($_POST['dtAcesso']) != ''){
                     $paramsTrabalho[':dtConsulta'] = trim($_POST['dtAcesso']);
                 }
@@ -58,7 +52,7 @@ if(isset($_POST['newTrabalho'], $_POST['cmbTipoTrabalho']) && $_POST['newTrabalh
             }
             if(isset($_POST['autor'])){
                 $contDel = excluiAutorTrabalho($conn, array(':cdTrabalho' => $cdTrabalho));
-                $arrAutor = explode (",", $_POST['autor']);
+                $arrAutor = explode (";", $_POST['autor']);
                 for($i = 0; $i < count($arrAutor); $i++){
                     $strAutor = mb_strtoupper(trim($arrAutor[$i], ' '), 'UTF-8');
                     $cdAutor = buscaAutorStr($conn, array(':dsAutor' => $strAutor));

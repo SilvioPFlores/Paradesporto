@@ -6,7 +6,7 @@ function getTrabalho( $arrchave, $arrTpTrab, $arrTrab = null){
             <div class="mb-3" id="divChkChave">
             <?php
             foreach ($arrchave as $dadoChave){
-                foreach($arrTrab[count($arrTrab) - 1] as $dadoChaveSelec){
+                foreach($arrTrab->chaves as $dadoChaveSelec){
                     if($dadoChaveSelec[0] == $dadoChave[0]){
                         echo"
                         <div class='form-check'>
@@ -42,7 +42,7 @@ function getTrabalho( $arrchave, $arrTpTrab, $arrTrab = null){
                 <option selected value='100'>Selecione</option>
                 <?php
                 foreach($arrTpTrab as $dadoTpTrab){
-                    if ($dadoTpTrab[0] == $arrTrab[15]){
+                    if ($dadoTpTrab[0] == $arrTrab->cd_tipo){
                         echo "<option value='$dadoTpTrab[0]' selected>$dadoTpTrab[1]</option>";
                     }
                     else{
@@ -58,7 +58,7 @@ function getTrabalho( $arrchave, $arrTpTrab, $arrTrab = null){
     <div class="row">
         <div class="col-md-12">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="autor" id="autor" placeholder="Autor" value="<?= $arrTrab[count($arrTrab) - 2] ?>">
+                <input type="text" class="form-control" name="autor" id="autor" placeholder="Autor" value="<?= $arrTrab->strAutor ?>">
                 <label for="autor">Autor:</label>
             </div>
         </div>
@@ -66,7 +66,7 @@ function getTrabalho( $arrchave, $arrTpTrab, $arrTrab = null){
     <div class="row">
         <div class="col-md-12">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Título" value='<?php echo str_replace("'", "&#39;", $arrTrab[0]) ?>'>
+                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Título" value='<?php echo str_replace("'", "&#39;", $arrTrab->ds_titulo) ?>'>
                 <label for="titulo">Título:</label>
             </div>
         </div>
@@ -74,67 +74,47 @@ function getTrabalho( $arrchave, $arrTpTrab, $arrTrab = null){
     <div class="row divTrabalhos">
         <div class="col-md-12">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="revista" id="revista" placeholder="Revista" value="<?= $arrTrab[1] ?>">
-                <label for="revista">Revista:</label>
-            </div>
-        </div>
-    </div>
-    <div class="row divLivro">
-        <div class="col-md-6">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="editora" id="editora" placeholder="Editora" value="<?= $arrTrab[2] ?>">
-                <label for="editora">Editora:</label>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="isbn" id="isbn" placeholder="ISBN" value="<?= $arrTrab[3] ?>">
-                <label for="isbn">ISBN:</label>
+                <input type="text" class="form-control" name="publicadoPor" id="publicadoPor" placeholder="publicadoPor" value="<?= $arrTrab->ds_publicado_por ?>">
+                <label for="publicadoPor">Revista / Editora / Instituição:</label>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="ano" id="ano" placeholder="Ano" value="<?= $arrTrab[4] ?>">
+                <input type="text" class="form-control" name="isbn" id="isbn" placeholder="ISBN" value="<?= $arrTrab->ds_isbn ?>">
+                <label for="isbn">ISBN:</label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="ano" id="ano" placeholder="Ano" value="<?= $arrTrab->ano_public ?>">
                 <label for="ano">Ano:</label>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="pag" id="pag" placeholder="Páginas" value="<?= $arrTrab[5] ?>">
-                <label for="pag">Páginas:</label>
-            </div>
-        </div>
-        <div class="col-md-4 divTrabalhos">
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="volume" id="volume" placeholder="Volume" value="<?= $arrTrab[6] ?>">
-                <label for="volume">Volume:</label>
-            </div>
-        </div>
-        <div class="col-md-4 divLivro">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade ou País" value="<?= $arrTrab[7] ?>">
+                <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade ou País" value="<?= $arrTrab->ds_cidade ?>">
                 <label for="cidade">Cidade ou País:</label>
             </div>
         </div>
     </div>
-    <div class="row divTrabalhos">
+    <div class="row">
         <div class="col-md-4">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="instit" id="instit" placeholder="Instituição" value="<?= $arrTrab[8] ?>">
-                <label for="instit">Instituição:</label>
+                <input type="text" class="form-control" name="pag" id="pag" placeholder="Páginas" value="<?= $arrTrab->ds_pagina ?>">
+                <label for="pag">Páginas:</label>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-floating mb-3">
-                <input type="date" class="form-control" name="data" id="data" placeholder="Data de Publicação" value="<?= $arrTrab[9] ?>">
-                <label for="data">Data de Publicação:</label>
+                <input type="number" class="form-control" name="volume" id="volume" placeholder="Volume" value="<?= $arrTrab->ds_volume ?>">
+                <label for="volume">Volume:</label>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-floating mb-3">
-                <input type="date" class="form-control" name="dtAcesso" id="dtAcesso" placeholder="Data de acesso" value="<?= $arrTrab[10] ?>">
+                <input type="date" class="form-control" name="dtAcesso" id="dtAcesso" placeholder="Data de acesso" value="<?= $arrTrab->dt_consulta ?>">
                 <label for="dtAcesso">Data de acesso:</label>
             </div>
         </div>
@@ -142,16 +122,8 @@ function getTrabalho( $arrchave, $arrTpTrab, $arrTrab = null){
     <div class="row">
         <div class="col-md-12">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="url" id="url" placeholder="URLs" value="<?= $arrTrab[11] ?>">
+                <input type="text" class="form-control" name="url" id="url" placeholder="URLs" value="<?= $arrTrab->ds_url ?>">
                 <label for="url">URLs:</label>
-            </div>
-        </div>
-    </div>
-    <div class="row divTrabalhos">
-        <div class="col-md-12">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="doi" id="doi" placeholder="DOI" value="<?= $arrTrab[12] ?>">
-                <label for="doi">DOI:</label>
             </div>
         </div>
     </div>
@@ -176,10 +148,10 @@ function getTrabalho( $arrchave, $arrTpTrab, $arrTrab = null){
         </div>
         <div class="col-md-1">
             <div class="mb-3">
-                <input type="hidden" id="hdnNomeTrab" name="hdnNomeTrab" value="<?= $arrTrab[13] ?>">
+                <input type="hidden" id="hdnNomeTrab" name="hdnNomeTrab" value="<?= $arrTrab->nm_arquivo ?>">
                 <?php
-                if ($arrTrab[13] != ''){
-                    echo "<a href='../repositorio/trabalhos/$arrTrab[13]' target='_blank'><img src='../repositorio/img/pdf.png' width='30px' height='30px' style='margin-top: 35px;'></a>";
+                if ($arrTrab->nm_arquivo != ''){
+                    echo "<a href='../repositorio/trabalhos/$arrTrab->nm_arquivo' target='_blank'><img src='../repositorio/img/pdf.png' width='30px' height='30px' style='margin-top: 35px;'></a>";
                 }
                 ?>
             </div>
@@ -189,7 +161,7 @@ function getTrabalho( $arrchave, $arrTpTrab, $arrTrab = null){
                 <label class="form-label">Conteúdo Publico?</label>
             </div>
             <?php
-            if($arrTrab[14] == 'S'){
+            if($arrTrab->ic_publico == 'S'){
                 $chkSim = 'checked';
                 $chkNao = '';
             }

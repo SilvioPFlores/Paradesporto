@@ -20,7 +20,7 @@ if(isset($_FILES['trabalhoPDF'], $_POST['hdnEnviaMaterial']) && $_POST['hdnEnvia
         }
     }
     else{
-        echo json_encode(array('erro' => "Falha ao carregar a imagem!"));
+        echo json_encode(array('erro' => "Falha ao carregar arquivo! Erro:".$_FILES['trabalhoPDF']['error']));
     }
 }
 else if(isset($_POST['excluiTrabalho'], $_POST['nomeTrabalho']) && $_POST['excluiTrabalho'] == 'exclui'){

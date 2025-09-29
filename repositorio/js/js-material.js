@@ -1,17 +1,4 @@
-function exibeLivro(num){
-	$('.cd0').hide(1000);
-	$('.in0').attr('required', false);
-	$('.in0').val('');
-	setTimeout(1000);
-	if(num != ''){
-		$('.cdAll').show(1000);
-		$('.cd'+num).show(1000);
-		$('.inAll').attr('required', true);
-		$('.in'+num).attr('required', true);
-	}
-}
 $(document).ready(function () {
-
 	try{
 		var phoneInputID = "#phone";
 		var input = document.querySelector(phoneInputID);
@@ -44,13 +31,6 @@ $(document).ready(function () {
     catch(error){
 		console.log(error);
 	}
-
-    //Exibir ou esconder as infprmações para livro
-    exibeLivro($('#cmbTipoTrabalho').val());
-	$('#cmbTipoTrabalho').change(function(){
-		exibeLivro(this.value);
-	});
-
 	$('#cmbNaoSelec').change(function(){
 		var idChave = this.value;
 		var chave = $(this).find('option').filter(':selected').text();
