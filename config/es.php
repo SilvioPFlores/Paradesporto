@@ -65,17 +65,14 @@
         /*----informações dos trabalhos-----*/
         "tituloTrab" => "Título",
         "autorTrab" => "Autor(es)",
-        "editora" => "Compañia de publicidad",
+        "publicPor" => "Publicado Por",
+        "publicPorInfo" => "Revista / Compañia de publicidad / Instituição",
         "isbn" => "ISBN",
         "cidade" => "Ciudad o País",
-        "revista" => "Revista",
         "anoPublic" => "Año de publicación",
         "volume" => "Volumen",
         "paginas" => "Páginas",
-        "instit" => "Instituição",
-        "dtPublic" => "Fecha de publicación",
         "url" => "URL",
-        "doi" => "DOI",
         "arquivo" => "Archivo",
         
         /*----------Projeto-----------*/

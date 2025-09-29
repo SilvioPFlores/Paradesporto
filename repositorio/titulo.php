@@ -6,6 +6,7 @@ include 'includes/head.php';
 getHead($lang['titulo'], $lang);
 include '../includes/menu.php';
 menu($lang['repositUp']);
+$l = '';
 if(isset($_GET['a'])){
     $arrTitulo = buscaTituloAutor($conn,array(':cdAutor' => $_GET['a']));
 }

@@ -65,17 +65,14 @@
         /*----informações dos trabalhos-----*/
         "tituloTrab" => "Title",
         "autorTrab" => "Author(s)",
-        "editora" => "Publishing company",
+        "publicPor" => "Published By",
+        "publicPorInfo" => "Journal / Publishing company / Institution",
         "isbn" => "ISBN",
         "cidade" => "City or Country",
-        "revista" => "Journal",
         "anoPublic" => "Publication Year",
         "volume" => "Volume",
         "paginas" => "Pages",
-        "instit" => "Institution",
-        "dtPublic" => "Publication date",
         "url" => "URL",
-        "doi" => "DOI",
         "arquivo" => "File",
         
         /*----------Projeto-----------*/

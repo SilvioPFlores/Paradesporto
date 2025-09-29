@@ -22,6 +22,5 @@ function buscaPor ($lang, $letra, $pag){
         </div>
     </div>
     <br>
-    <br>
     <?php
 }

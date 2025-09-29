@@ -65,17 +65,14 @@
         /*----informações dos trabalhos-----*/
         "tituloTrab" => "Título",
         "autorTrab" => "Autor(es)",
-        "editora" => "Editora",
+        "publicPor" => "Publicado Por",
+        "publicPorInfo" => "Revista / Editora / Instituição",
         "isbn" => "ISBN",
         "cidade" => "Cidade ou País",
-        "revista" => "Revista",
         "anoPublic" => "Ano de Publicação",
         "volume" => "Volume",
         "paginas" => "Páginas",
-        "instit" => "Instituição",
-        "dtPublic" => "Data de Publicação",
         "url" => "URL",
-        "doi" => "DOI",
         "arquivo" => "Arquivo",
         
         /*----------Projeto-----------*/

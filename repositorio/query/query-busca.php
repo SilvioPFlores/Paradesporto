@@ -158,10 +158,10 @@ function buscaTrabalhoStr($conn, $params){
 function buscaTrabalhoCodigo($conn, $params){
     try {
         //SELECT
-        $comandoSQL = "SELECT ds_titulo, cd_tipo, ds_editora, ds_isbn, ds_revista, ano_public, ds_volume, ds_pagina, ds_cidade, ds_instituicao, DATE_FORMAT(dt_public,'%d/%m/%Y'),  ds_url, ds_doi, nm_arquivo, ic_publico FROM tb_trabalho WHERE cd_trabalho = :cdTrabalho AND ic_status = 'AT'";
+        $comandoSQL = "SELECT ds_titulo, cd_tipo, ds_publicado_por, ds_isbn, ano_public, ds_volume, ds_pagina, ds_cidade, ds_url, nm_arquivo, ic_publico FROM tb_trabalho WHERE cd_trabalho = :cdTrabalho AND ic_status = 'AT'";
         $stmt = $conn->prepare($comandoSQL);
         $stmt->execute($params);
-        return $stmt->fetch(PDO::FETCH_BOTH);
+        return $stmt-> fetchObject();
     } catch (PDOException $Exception) {
         echo "SELECT TRABALHO - Erro: " . $Exception->getMessage() . " . Código" . $Exception->getCode();
     }
