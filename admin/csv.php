@@ -30,12 +30,12 @@ if (isset($_FILES['arqCSV'], $_POST['newCsv'])) {
                 ':pagina'       => trim($dados[8], ' '),
                 ':cidade'       => trim($dados[9], ' '),
                 ':isbn'         => trim($dados[10], ' '),
-                ':dtConsulta'   => trim($dados[11], ' '),
+                ':dtConsulta'   => trim($dados[11], ' ') != '' ?trim($dados[11], ' ') : date('d/m/Y'),
                 ':url'          => trim($dados[12], ' '),
                 ':nomeArquivo'  => trim($dados[13], ' '),
-                ':publico'      => trim($dados[14], ' '),
+                ':publico'      => trim($dados[14], ' ') != '' ?trim($dados[14], ' ') : 'N',
                 ':cdUsuario'    => $cdUsuario,
-                ':status'       => trim($dados[16], ' ')
+                ':status'       => trim($dados[16], ' ') != '' ?trim($dados[16], ' ') : 'AT'
             );
             $cdTrabalho = gravaTrabalho($conn, $paramsTrabalho);
             //se retornar o numero do cdTrabalho dá continuidade ao processo
